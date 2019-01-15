@@ -1,0 +1,11 @@
+C:\Users\david\Desktop\GitHub\casbinet\casbinet\bin\Debug\netcoreapp2.1\casbinet.deps.json
+C:\Users\david\Desktop\GitHub\casbinet\casbinet\bin\Debug\netcoreapp2.1\casbinet.runtimeconfig.json
+C:\Users\david\Desktop\GitHub\casbinet\casbinet\bin\Debug\netcoreapp2.1\casbinet.runtimeconfig.dev.json
+C:\Users\david\Desktop\GitHub\casbinet\casbinet\bin\Debug\netcoreapp2.1\casbinet.dll
+C:\Users\david\Desktop\GitHub\casbinet\casbinet\bin\Debug\netcoreapp2.1\casbinet.pdb
+C:\Users\david\Desktop\GitHub\casbinet\casbinet\obj\Debug\netcoreapp2.1\casbinet.csprojAssemblyReference.cache
+C:\Users\david\Desktop\GitHub\casbinet\casbinet\obj\Debug\netcoreapp2.1\casbinet.csproj.CoreCompileInputs.cache
+C:\Users\david\Desktop\GitHub\casbinet\casbinet\obj\Debug\netcoreapp2.1\casbinet.AssemblyInfoInputs.cache
+C:\Users\david\Desktop\GitHub\casbinet\casbinet\obj\Debug\netcoreapp2.1\casbinet.AssemblyInfo.cs
+C:\Users\david\Desktop\GitHub\casbinet\casbinet\obj\Debug\netcoreapp2.1\casbinet.dll
+C:\Users\david\Desktop\GitHub\casbinet\casbinet\obj\Debug\netcoreapp2.1\casbinet.pdb
