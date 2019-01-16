@@ -3,6 +3,6 @@
 
     public interface IDomainsRoleManager : IRoleManager
     {
-        void AddLink(string roleOrUser, string role, params object[] domain);
+        void AddLink(string roleOrUser, string role, params string[] domain);
     }
 }
