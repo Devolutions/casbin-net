@@ -1,17 +1,35 @@
 ﻿namespace casbinet.persist
 {
+    using System;
     using System.Collections.Generic;
-    using System.Threading;
+    using System.Threading; 
 
-    //import org.casbin.jcasbin.model.Model;
+    using Model = casbinet.model.Model;
 
-    public interface Watcher
+    public class Helper
     {
-        void setUpdateCallback(Thread runnable); 
+        public interface loadPolicyLineHandler<T, U>
+        {
+            void accept(T t, U u);
+        }
 
-        void update();
+        public static void loadPolicyLine(String line, Model model)
+        {
+            if (line == String.Empty)
+            {
+                return;
+            }
 
+            if (line[0] == '#')
+            {
+                return;
+            }
+
+            String[] tokens = line.Split(", ");
+
+            String key = tokens[0];
+            String sec = key.Substring(0, 1);
+            model.model[sec][key].policy.add(Arrays.asList(Arrays.copyOfRange(tokens, 1, tokens.Length)));
+        }
     }
-
-    
 }
