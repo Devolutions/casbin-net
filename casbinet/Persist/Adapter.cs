@@ -2,18 +2,18 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Threading;
+    using System.Threading; 
 
-    //import org.casbin.jcasbin.model.Model;
+    using Model = casbinet.model.Model;
 
     public interface Adapter
     {
 
         void loadPolicy(Model model);
         void savePolicy(Model model);
-        void addPolicy(String sec, String ptype, List<String> rule);
-        void removePolicy(String sec, String ptype, List<String> rule);
-        void removeFilteredPolicy(String sec, String ptype, int fieldIndex, params object[] fieldValues);
+        void addPolicy(string sec, string ptype, IList<string> rule);
+        void removePolicy(string sec, string ptype, IList<string> rule);
+        void removeFilteredPolicy(string sec, string ptype, int fieldIndex, params string[] fieldValues);
 
     }
 }
