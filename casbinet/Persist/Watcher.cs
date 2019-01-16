@@ -3,15 +3,11 @@
     using System.Collections.Generic;
     using System.Threading;
 
-    //import org.casbin.jcasbin.model.Model;
-
-    public interface Watcher
+    public interface Watcher 
     {
-        void setUpdateCallback(Thread runnable); 
+        ThreadStart UpdateCallback { set; }
 
         void update();
 
     }
-
-    
 }

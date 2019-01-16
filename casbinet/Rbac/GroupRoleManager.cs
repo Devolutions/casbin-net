@@ -10,7 +10,7 @@ namespace casbinet.Rbac
         {
         }
 
-        public override bool HasLink(string roleName1, string roleName2, string domain)
+        public override bool HasLink(string roleName1, string roleName2, params string[] domain)
         {
             if (base.HasLink(roleName1, roleName2, domain))
             {

@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.Runtime.CompilerServices;
 
+    using casbinet.Util;
+
     public class DefaultRoleManager : IRoleManager
     {
         private string user;
@@ -90,7 +92,7 @@
             this.allRoles.Clear();
         }
 
-        public void AddLink(string roleName1, string roleName2, string domain)
+        public void AddLink(string roleName1, string roleName2, params string[] domain)
         {
             roleName1 = domain + "::" + roleName1;
             roleName2 = domain + "::" + roleName2;
@@ -100,7 +102,7 @@
             role1.AddRole(role2);
         }
 
-        public void DeleteLink(string roleName1, string roleName2, string domain)
+        public void DeleteLink(string roleName1, string roleName2, params string[] domain)
         {
             roleName1 = domain + "::" + roleName1;
             roleName2 = domain + "::" + roleName2;
@@ -115,7 +117,7 @@
             role1.DeleteRole(role2);
         }
 
-        public virtual bool HasLink(string roleName1, string roleName2, string domain)
+        public virtual bool HasLink(string roleName1, string roleName2, params string[] domain)
         {
             roleName1 = domain + "::" + roleName1;
             roleName2 = domain + "::" + roleName2;
@@ -134,7 +136,7 @@
             return role1.HasRole(roleName2, this.maxHierarchyLevel);
         }
 
-        public List<string> GetRoles(string roleName, string domain = "")
+        public List<string> GetRoles(string roleName, params string[] domain)
         {
             roleName = domain + "::" + roleName;
 
@@ -172,9 +174,12 @@
             return names;
         }
 
-        public void PrintRoles()
+        public virtual void PrintRoles()
         {
-            throw new System.NotImplementedException();
+            foreach (Role role in this.allRoles.Values)
+            {
+                Util.LogPrint(role.ToString());
+            }
         }
     }
 }
