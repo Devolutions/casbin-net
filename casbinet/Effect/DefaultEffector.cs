@@ -1,35 +1,78 @@
-﻿namespace casbinet.persist
+﻿namespace casbinet.effect
 {
     using System;
-    using System.Collections.Generic;
-    using System.Threading; 
 
-    using Model = casbinet.model.Model;
-
-    public class Helper
+    public class DefaultEffector : Effector
     {
-        public interface loadPolicyLineHandler<T, U>
-        {
-            void accept(T t, U u);
-        }
 
-        public static void loadPolicyLine(String line, Model model)
+        public virtual bool mergeEffects(string expr, Effect[] effects, float[] results)
         {
-            if (line == String.Empty)
+            bool result;
+            if (expr.Equals("some(where (p_eft == allow))"))
             {
-                return;
+                result = false;
+                foreach (Effect eft in effects)
+                {
+                    if (eft == Effect.Allow)
+                    {
+                        result = true;
+                        break;
+                    }
+                }
+            }
+            else if (expr.Equals("!some(where (p_eft == deny))"))
+            {
+                result = true;
+                foreach (Effect eft in effects)
+                {
+                    if (eft == Effect.Deny)
+                    {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+            else if (expr.Equals("some(where (p_eft == allow)) && !some(where (p_eft == deny))"))
+            {
+                result = false;
+                foreach (Effect eft in effects)
+                {
+                    if (eft == Effect.Allow)
+                    {
+                        result = true;
+                    }
+                    else if (eft == Effect.Deny)
+                    {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+            else if (expr.Equals("priority(p_eft) || deny"))
+            {
+                result = false;
+                foreach (Effect eft in effects)
+                {
+                    if (eft != Effect.Indeterminate)
+                    {
+                        if (eft == Effect.Allow)
+                        {
+                            result = true;
+                        }
+                        else
+                        {
+                            result = false;
+                        }
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("unsupported effect");
             }
 
-            if (line[0] == '#')
-            {
-                return;
-            }
-
-            String[] tokens = line.Split(", ");
-
-            String key = tokens[0];
-            String sec = key.Substring(0, 1);
-            model.model[sec][key].policy.add(Arrays.asList(Arrays.copyOfRange(tokens, 1, tokens.Length)));
+            return result;
         }
     }
 }

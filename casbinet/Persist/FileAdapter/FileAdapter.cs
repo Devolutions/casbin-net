@@ -4,7 +4,8 @@
     using System.Collections.Generic;
     using System.Text;
     using System.IO;
-     
+    using System.Security.Cryptography;
+
     using Assertion = casbinet.model.Assertion;
 	using Model = casbinet.model.Model;
 	using Util = casbinet.util.Util;
@@ -22,7 +23,7 @@
         {
             if (filePath == string.Empty)
             {
-                // throw new Error("invalid file path, file path cannot be empty");
+                throw new Exception("invalid file path, file path cannot be empty");
                 return;
             }
 
@@ -102,12 +103,13 @@
             }
         }
 
-        private void savePolicyFile(string text)
+        private void savePolicyFile(char[] text)
         {
             try
             {
+                //Byte[] byteArray = Encoding.UTF8.GetBytes(text);
                 FileStream fos = new FileStream(filePath, FileMode.Create, FileAccess.Write);
-                fos.WriteByte(text.GetBytes());
+                fos.WriteByte(text);
                 fos.Close();
             }
             catch (IOException e)
