@@ -1,35 +1,31 @@
 ﻿namespace casbinet.persist
 {
     using System;
-    using System.Collections.Generic;
-    using System.Threading; 
+    using System.Linq;
 
     using casbinet.Model;
 
     public class Helper
     {
-        public interface loadPolicyLineHandler<T, U>
-        {
-            void accept(T t, U u);
-        }
+        public delegate void LoadPolicyLineHandler<in T, in U>(T t, U u);
 
-        public static void loadPolicyLine(String line, Model model)
+        public static void LoadPolicyLine(string line, Model model)
         {
-            if (line == String.Empty)
+            if (string.IsNullOrEmpty(line))
             {
                 return;
             }
 
-            if (line[0] == '#')
+            if (line.StartsWith('#'))
             {
                 return;
             }
 
-            String[] tokens = line.Split(", ");
+            string[] tokens = line.Split(", ");
 
-            String key = tokens[0];
-            String sec = key.Substring(0, 1);
-            model.model[sec][key].policy.add(Arrays.asList(Arrays.copyOfRange(tokens, 1, tokens.Length)));
+            string key = tokens[0];
+            string sec = key.Substring(0, 1);
+            model.model[sec][key].Policy.Add(tokens.ToList());
         }
     }
 }
