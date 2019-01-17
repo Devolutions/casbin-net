@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Threading; 
 
-    using Model = casbinet.model.Model;
+    using casbinet.Model;
 
     public class Helper
     {

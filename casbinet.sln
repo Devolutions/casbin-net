@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "casbinet", "casbinet\casbinet.csproj", "{7FD30589-2D95-4AAE-B994-E0B69F421207}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "casbinet.rbac", "casbinet.rbac\casbinet.rbac.csproj", "{2F276F05-4BCE-415D-89F9-77807F5C555C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{7FD30589-2D95-4AAE-B994-E0B69F421207}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FD30589-2D95-4AAE-B994-E0B69F421207}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FD30589-2D95-4AAE-B994-E0B69F421207}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F276F05-4BCE-415D-89F9-77807F5C555C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F276F05-4BCE-415D-89F9-77807F5C555C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F276F05-4BCE-415D-89F9-77807F5C555C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F276F05-4BCE-415D-89F9-77807F5C555C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

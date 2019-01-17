@@ -5,9 +5,7 @@
     using System.Text;
     using System.IO;
      
-    using Assertion = casbinet.model.Assertion;
-	using Model = casbinet.model.Model;
-	using Util = casbinet.util.Util;
+    using casbinet.Model;
 
     public class FileAdapter : Adapter
     {
