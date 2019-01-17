@@ -60,5 +60,10 @@
 
             return Enumerable.SequenceEqual(a, b);
         }
+
+        public static string ArrayToString(string[] s)
+        {
+            return string.Join(", ", s);
+        }
     }
 }
