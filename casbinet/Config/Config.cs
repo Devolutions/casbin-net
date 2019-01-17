@@ -23,7 +23,6 @@
 
         private Config()
         {
-            //this.data = new Tuple<string, string, string>();
         }
 
         public static Config NewConfig(string confName)
@@ -38,7 +37,6 @@
             Config c = new Config();
             c.ParseText(new StreamReader(text));
             return c;
-
         }
 
         private bool AddConfig(string section, string option, string value)
@@ -111,6 +109,8 @@
                 string value = optionVal[1].Trim();
                 this.AddConfig(section, option, value);
             }
+            
+            reader.Close();
         }
 
         public bool GetBool(string key)
