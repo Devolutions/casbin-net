@@ -1,8 +1,10 @@
 ﻿namespace casbinet.Util
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
+    using System.Net.Sockets;
     using System.Text.RegularExpressions;
 
     public static class BuiltInOperator
@@ -100,26 +102,35 @@
 
         public static bool IpMatch(string ip1, string ip2)
         {
-            try
+            string rgxString = @"^(((\d)|(\d\d)|((1)\d\d)|(2[0-4]\d)|(25[0-5])).){3}((\d)|(\d\d)|((1)\d\d)|(2[0-4]\d)|(25[0-5]))$";
+            Regex rgx = new Regex(rgxString);
+            if(!rgx.IsMatch(ip1))
             {
-                IPNetwork ipn1 = IPNetwork.Parse(ip1);
-                IPNetwork ipn2 = IPNetwork.Parse(ip2);
+                throw new Exception("invalid argument: ip1 in IPMatch() function is not an IP address.");
+            }
 
-                try
-                {
-                 
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-            }
-            catch (Exception e)
+            IPNetwork ipNetwork2 = IPNetwork.Parse(ip2);
+            if(!(ipNetwork2.AddressFamily == AddressFamily.InterNetwork || ipNetwork2.AddressFamily == AddressFamily.InterNetworkV6))
             {
-                Console.WriteLine(e);
-                throw;
+                throw new Exception("invalid argument: ip2 in IPMatch() function is neither an IP address nor a CIDR.");
             }
+
+            IPNetwork ipNetwork1 = IPNetwork.Parse(ip1);
+
+            if (ipNetwork1.Equals(ipNetwork2))
+            {
+                return true;
+            }
+
+            return ipNetwork1.Netmask.Equals(IPAddress.Parse(ip2));
+        }
+
+        public static (object, Exception) IpMatchFunc(params object[] args)
+        {
+            string name1 = args[0].ToString();
+            string name2 = args[1].ToString();
+
+            return (IpMatch(name1, name2), null);
         }
     }
 }
