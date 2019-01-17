@@ -48,7 +48,7 @@
                     foreach (List<string> rule in ast.Policy)
                     {
                         tmp.Append(pType + ", ");
-                        tmp.Append(Util.ArrayToString(rule));
+                        tmp.Append(Util.ArrayToString(rule.ToArray()));
                         tmp.Append("\n");
                     }
                 }
@@ -64,7 +64,7 @@
                     foreach (List<string> rule in ast.Policy)
                     {
                         tmp.Append(pType + ", ");
-                        tmp.Append(Util.ArrayToString(rule));
+                        tmp.Append(Util.ArrayToString(rule.ToArray()));
                         tmp.Append("\n");
                     }
                 }
