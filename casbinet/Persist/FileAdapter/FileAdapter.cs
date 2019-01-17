@@ -26,7 +26,7 @@
                 throw new Exception("Invalid file path, file path cannot be empty");
             }
 
-            this.LoadPolicyFile(model, Helper.LoadPolicyLine);  
+            this.LoadPolicyFile(model);  
         }
 
         public virtual void SavePolicy(Model model)
@@ -73,7 +73,7 @@
             this.SavePolicyFile(tmp.ToString().Trim());
         }
 
-        private void LoadPolicyFile(Model model, Helper.LoadPolicyLineHandler<string, Model> handler)
+        private void LoadPolicyFile(Model model)
         {
             StreamReader reader;
             try
