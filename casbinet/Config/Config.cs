@@ -177,9 +177,9 @@
             }
 
             (string, string) keyTuple = (section, option);
-            if (this.data.ContainsKey(keyTuple))
+
+            if (this.data.TryGetValue(keyTuple, out string value))
             {
-                this.data.TryGetValue(keyTuple, out string value);
                 return value;
             }
             else

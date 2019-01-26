@@ -1,11 +1,14 @@
 ﻿namespace casbinet.persist
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading;
+    using casbinet.Model;
 
-    public interface Watcher
+    public class Watcher
     {
-        void update();
+        public event Helper.LoadPolicyLineHandler<string, Model> OnUpdate;
+
+        public void Update(string line, Model model)
+        {
+            this.OnUpdate?.Invoke(line, model);
+        }
     }
 }

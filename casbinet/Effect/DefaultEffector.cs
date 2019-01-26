@@ -4,7 +4,7 @@ using System.Text;
 
 namespace casbinet.Effect
 {
-    public class DefaultEffector : Effector
+    public class DefaultEffector : IEffector
     {
 
         public DefaultEffector()

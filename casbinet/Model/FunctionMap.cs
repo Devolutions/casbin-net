@@ -4,11 +4,12 @@ using System.Text;
 
 namespace casbinet.Model
 {
+    using casbinet.Rbac;
     using casbinet.Util;
 
     public class FunctionMap
     {
-        public delegate (object, Exception) KeyMatchFunction(params object[] args);
+        public delegate (object, Exception) KeyMatchFunction(IRoleManager rm = null, params object[] args);
 
         public Dictionary<string, KeyMatchFunction> fm;
 

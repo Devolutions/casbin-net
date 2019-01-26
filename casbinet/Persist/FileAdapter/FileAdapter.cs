@@ -8,7 +8,7 @@
     using casbinet.Model;
     using casbinet.Util;
 
-    public class FileAdapter : Adapter
+    public class FileAdapter : IAdapter
     {
         private string filePath;
 
